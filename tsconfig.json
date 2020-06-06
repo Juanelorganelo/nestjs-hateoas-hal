@@ -1,0 +1,27 @@
+{
+    "include": ["./src/**/*.ts", "./db/**/*.ts"],
+    "compilerOptions": {
+        // Decorators.
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        // Module resolution.
+        "esModuleInterop": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "forceConsistentCasingInFileNames": true,
+        // Paths.
+        "baseUrl": ".",
+        "paths": {
+            "@app/*": ["src/*"]
+        },
+        // Type checking.
+        "noFallthroughCasesInSwitch": true,
+        "strict": true,
+        "strictFunctionTypes": false,
+        "strictPropertyInitialization": false,
+        // Output.
+        "target": "es2019",
+        "sourceMap": true,
+        "allowSyntheticDefaultImports": true
+    }
+}

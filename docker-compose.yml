@@ -1,0 +1,33 @@
+version: "3.7"
+
+services:
+    web:
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
+        ports:
+            - 8080:8080
+            - 9229:9229
+        volumes:
+            - .:/opt/app
+            # Anonymous module so that the node_modules on the host
+            # doesn't override the node_modules on the container.
+            # - /opt/app/node_modules
+        command:
+            - start
+        depends_on:
+            - database
+
+    database:
+        image: postgres:11.8-alpine
+        ports:
+            - 127.0.0.1:5432:5432
+        volumes:
+            - virtualroom-api:/var/lib/postgresql/data
+        environment:
+            POSTGRES_DB: virtualroom
+            POSTGRES_USER: aloy
+            POSTGRES_PASSWORD: X.23@nem-x
+
+volumes:
+    virtualroom-api:

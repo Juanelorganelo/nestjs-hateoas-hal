@@ -1,0 +1,8 @@
+{
+    "verbose": false,
+    "watch": ["src/**/*.ts", ".env*"],
+    "ignore": ["*.test.js", ".*rc.js"],
+    "execMap": {
+        "js": "ts-node -r tsconfig-paths"
+    }
+}
