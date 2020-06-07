@@ -27,7 +27,7 @@ services:
         environment:
             POSTGRES_DB: virtualroom
             POSTGRES_USER: aloy
-            POSTGRES_PASSWORD: X.23@nem-x
+            POSTGRES_PASSWORD: rost
 
 volumes:
     virtualroom-api:
