@@ -7,7 +7,6 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "prestart": "yarn lint",
     "prestart:prod": "yarn build",
     "build": "babel src --out-dir build",
     "clean": "rm -rf build",
@@ -15,8 +14,8 @@
     "lint": "eslint 'src/**/*.ts'",
     "lint:fix": "yarn lint --fix'",
     "start": "nodemon src/app.ts",
-    "start:debug": "ndb nodemon src/app.js",
     "start:prod": "node build/index.js",
+    "start:debug": "nodemon --inspect=0.0.0.0 src/app.ts",
     "typeorm": "ts-node -r tsconfig-paths -r ./scripts/loadEnv.js node_modules/typeorm/cli"
   },
   "dependencies": {
