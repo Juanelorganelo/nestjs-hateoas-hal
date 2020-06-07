@@ -1,8 +1,12 @@
 {
     "verbose": false,
-    "watch": ["src/**/*.ts", ".env*"],
+    "watch": [
+        "src/**/*.ts",
+        ".env",
+        ".env.local"
+    ],
     "ignore": ["*.test.js", ".*rc.js"],
     "execMap": {
-        "js": "ts-node -r tsconfig-paths"
+        "ts": "ts-node -r tsconfig-paths/register"
     }
 }
