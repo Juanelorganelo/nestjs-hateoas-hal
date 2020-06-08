@@ -16,7 +16,7 @@
     "start": "nodemon src/app.ts",
     "start:prod": "node build/index.js",
     "start:debug": "nodemon --inspect=0.0.0.0 src/app.ts",
-    "typeorm": "ts-node -r tsconfig-paths -r ./scripts/loadEnv.js node_modules/typeorm/cli"
+    "typeorm": "ts-node -r tsconfig-paths -r ./db/loadEnv.ts node_modules/typeorm/cli"
   },
   "dependencies": {
     "@nestjs/common": "^7.1.3",
