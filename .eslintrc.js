@@ -6,7 +6,7 @@ module.exports = {
         "prettier/prettier": "error",
         // Almost all the legacy code we encountered was filled with overly complex and convoluted functions and methods.
         // Set the complexity rule to prevent this from happening again as it was VERY VERY hard to diagnose bugs with this code.
-        complexity: ["error", 15],
+        complexity: ["error", 20],
         // Disallow function expressions using the `function` keyword.
         // This is mainly to avoid confusion among developers with how the JavaScript interpreter will hoist declarations but not expressions.
         "func-style": ["error", "declaration", { allowArrowFunctions: true }],
