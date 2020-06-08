@@ -1,6 +1,6 @@
 module.exports = {
     plugins: ["prettier"],
-    extends: ["esnext", "node", "prettier", "plugin:prettier/recommended"],
+    extends: ["airbnb-base", "node", "plugin:prettier/recommended"],
     rules: {
         // Throw errors when files are not formatted.
         "prettier/prettier": "error",
@@ -43,7 +43,7 @@ module.exports = {
                         parser: "typescript",
                     },
                 ],
-                // We wan't method overloads to go togheter.
+                // We wan't method overloads to go together.
                 "lines-between-class-members": [
                     "error",
                     "always",
@@ -58,6 +58,7 @@ module.exports = {
                 // This rule doesn't detect TypeScript constructors with access modifiers.
                 "no-useless-constructor": ["off"],
                 "@typescript-eslint/no-useless-constructor": ["error"],
+                // Always declare class member accessibility.
                 "@typescript-eslint/explicit-member-accessibility": [
                     "error",
                     {
