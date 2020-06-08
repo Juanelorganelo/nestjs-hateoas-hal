@@ -16,10 +16,30 @@ module.exports = {
         "import/prefer-default-export": ["off"],
         // We use require in JavaScript files (i.e. configs and scripts) and import in TypeScript.
         "import/no-commonjs": ["off"],
+        "import/no-extraneous-dependencies": ["off"],
         // This rule is redundant since we use TypeScript.
         "import/extensions": ["off"],
         "import/no-unresolved": ["off"],
         "import/no-nodejs-modules": ["off"],
+        // We use Node.js so using for...of is allowed since it doesn't needs a polyfill.
+        'no-restricted-syntax': [
+            'error',
+            {
+                selector: 'ForInStatement',
+                message:
+                    'for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.'
+            },
+            {
+                selector: 'LabeledStatement',
+                message:
+                    'Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand.'
+            },
+            {
+                selector: 'WithStatement',
+                message:
+                    '`with` is disallowed in strict mode because it makes code impossible to predict and optimize.'
+            }
+        ],
     },
     overrides: [
         // TypeScript rules.
@@ -68,6 +88,8 @@ module.exports = {
                         },
                     },
                 ],
+                // This conflicts with a rule from the airbnb config.
+                "@typescript-eslint/no-floating-promises": ["off"],
                 // This rules are just broken and rid of false positives.
                 "@typescript-eslint/no-unsafe-call": ["off"],
                 "@typescript-eslint/no-unsafe-return": ["off"],
