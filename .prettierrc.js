@@ -6,7 +6,9 @@ module.exports = {
     overrides: [
         {
             files: ["*.ts"],
-            printWidth: 120,
+            options: {
+                printWidth: 100
+            },
         },
     ],
 };
