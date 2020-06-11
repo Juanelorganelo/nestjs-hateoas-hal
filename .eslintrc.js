@@ -22,23 +22,23 @@ module.exports = {
         "import/no-unresolved": ["off"],
         "import/no-nodejs-modules": ["off"],
         // We use Node.js so using for...of is allowed since it doesn't needs a polyfill.
-        'no-restricted-syntax': [
-            'error',
+        "no-restricted-syntax": [
+            "error",
             {
-                selector: 'ForInStatement',
+                selector: "ForInStatement",
                 message:
-                    'for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.'
+                    "for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.",
             },
             {
-                selector: 'LabeledStatement',
+                selector: "LabeledStatement",
                 message:
-                    'Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand.'
+                    "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand.",
             },
             {
-                selector: 'WithStatement',
+                selector: "WithStatement",
                 message:
-                    '`with` is disallowed in strict mode because it makes code impossible to predict and optimize.'
-            }
+                    "`with` is disallowed in strict mode because it makes code impossible to predict and optimize.",
+            },
         ],
     },
     overrides: [
@@ -64,13 +64,7 @@ module.exports = {
                     },
                 ],
                 // We wan't method overloads to go together.
-                "lines-between-class-members": [
-                    "error",
-                    "always",
-                    {
-                        exceptAfterSingleLine: true,
-                    },
-                ],
+                "lines-between-class-members": ["off"],
                 // Only use import in TypeScript.
                 "import/no-commonjs": ["off"],
                 // This rule doesn't work with bound methods in the constructor.
@@ -90,6 +84,8 @@ module.exports = {
                 ],
                 // This conflicts with a rule from the airbnb config.
                 "@typescript-eslint/no-floating-promises": ["off"],
+                // This is pretty anoying.
+                "@typescript-eslint/no-explicit-any": ["off"],
                 // This rules are just broken and rid of false positives.
                 "@typescript-eslint/no-unsafe-call": ["off"],
                 "@typescript-eslint/no-unsafe-return": ["off"],
