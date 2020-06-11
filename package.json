@@ -8,7 +8,8 @@
   "private": true,
   "scripts": {
     "prestart:prod": "yarn build",
-    "build": "babel src --out-dir build",
+    "prebuild": "yarn clean",
+    "build": "tsc -p tsconfig.build.json",
     "clean": "rm -rf build",
     "clean:modules": "rm -rf node_modules",
     "lint": "eslint 'src/**/*.ts'",
