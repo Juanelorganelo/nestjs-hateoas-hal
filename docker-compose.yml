@@ -12,7 +12,7 @@ services:
             - .:/opt/app
             # Anonymous module so that the node_modules on the host
             # doesn't override the node_modules on the container.
-            # - /opt/app/node_modules
+            - node_modules:/opt/app/node_modules
         command:
             - start
         depends_on:
@@ -23,11 +23,13 @@ services:
         ports:
             - 127.0.0.1:5432:5432
         volumes:
-            - virtualroom-api:/var/lib/postgresql/data
+            - database:/var/lib/postgresql/data
         environment:
             POSTGRES_DB: virtualroom
             POSTGRES_USER: aloy
             POSTGRES_PASSWORD: rost
 
 volumes:
-    virtualroom-api:
+    database:
+    node_modules:
+
