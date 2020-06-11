@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { SnakeNamingStrategy } from "@app/core/typeorm/typeorm.naming-strategy";
+import { SnakeNamingStrategy } from "@app/core/typeorm/SnakeNamingStretegy";
 
 @Module({
     imports: [
