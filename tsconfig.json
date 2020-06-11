@@ -1,5 +1,5 @@
 {
-    "include": ["./src/**/*.ts", "./db/**/*.ts"],
+    "include": ["./src/**/*.ts", "./db/**/*.ts", "./test/**/*.ts"],
     "compilerOptions": {
         // Decorators.
         "emitDecoratorMetadata": true,
@@ -12,7 +12,8 @@
         // Paths.
         "baseUrl": ".",
         "paths": {
-            "@app/*": ["src/*"]
+            "@app/*": ["src/*"],
+            "@core/*": ["src/core/*"]
         },
         // Type checking.
         "noFallthroughCasesInSwitch": true,
@@ -21,6 +22,7 @@
         "strictPropertyInitialization": false,
         // Output.
         "target": "es2019",
+        "outDir": "./build",
         "sourceMap": true,
         "allowSyntheticDefaultImports": true
     }
