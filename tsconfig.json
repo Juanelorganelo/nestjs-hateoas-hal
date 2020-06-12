@@ -1,29 +1,24 @@
 {
     "include": ["./src/**/*.ts", "./db/**/*.ts", "./test/**/*.ts"],
     "compilerOptions": {
-        // Decorators.
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        // Module resolution.
-        "esModuleInterop": true,
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "forceConsistentCasingInFileNames": true,
-        // Paths.
         "baseUrl": ".",
         "paths": {
             "@app/*": ["src/*"],
             "@core/*": ["src/core/*"]
         },
-        // Type checking.
         "noFallthroughCasesInSwitch": true,
         "strict": true,
         "strictFunctionTypes": false,
         "strictPropertyInitialization": false,
-        // Output.
         "target": "es2019",
         "outDir": "./build",
         "sourceMap": true,
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "forceConsistentCasingInFileNames": true
     }
 }
