@@ -14,6 +14,7 @@
     "clean:modules": "rm -rf node_modules",
     "lint": "eslint 'src/**/*.ts'",
     "lint:fix": "yarn lint --fix'",
+    "test": "jest --coverage",
     "start": "nodemon src/app.ts",
     "start:prod": "node build/index.js",
     "start:debug": "nodemon --inspect=0.0.0.0 src/app.ts",
@@ -37,6 +38,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
+    "@types/jest": "^26.0.0",
     "@types/lodash": "^4.14.155",
     "@typescript-eslint/eslint-plugin": "^3.1.0",
     "@typescript-eslint/parser": "^3.1.0",
@@ -50,6 +52,7 @@
     "jest": "^26.0.1",
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
+    "ts-jest": "^26.1.0",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.5"
   }
