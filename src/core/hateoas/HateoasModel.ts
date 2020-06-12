@@ -2,12 +2,14 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import qs from "querystring";
+import isEmpty from "lodash/isEmpty";
+import { RequestMethod } from "@nestjs/common";
 import { Type } from "@core/interfaces";
 import { HashMap } from "@app/core/dataStructures/HashMap";
 import { HOST_METADATA, METHOD_METADATA, PATH_METADATA } from "@core/hateoas/constants";
 import { HateoasLink, HateoasJsonModel } from "./interfaces";
 
-const PARAMS_REGEXP = /:([a-zA-Z0-9])+/g;
+const PARAMS_REGEXP = /:([a-zA-Z0-9]+)/g;
 const PARAMS_REGEXP_FOR_TEST = new RegExp(PARAMS_REGEXP.source);
 
 /**
@@ -109,7 +111,7 @@ export abstract class HateoasModel<T extends HateoasModel = any> {
      */
     // eslint-disable-next-line @typescript-eslint/ban-types
     public method(method: Function, options?: HateoasMethodOptions): this {
-        const link = this.createLink(method, options?.params, options?.attributes);
+        const link = this.createLink(method, options?.query, options?.params, options?.attributes);
         this.links.append(options?.rel ?? method.name, link);
         return this;
     }
@@ -133,7 +135,8 @@ export abstract class HateoasModel<T extends HateoasModel = any> {
         return {
             ...serialize(this, ["controller", "links", "embedded"]),
             _links: this.links.toJSON(),
-            _embedded: this.embedded.toJSON<HateoasJsonModel>(),
+            _embedded:
+                this.embedded.size > 0 ? this.embedded.toJSON<HateoasJsonModel>() : undefined,
         };
     }
 
@@ -159,7 +162,7 @@ export abstract class HateoasModel<T extends HateoasModel = any> {
         });
 
         // Append query parameters if any.
-        if (query) {
+        if (!isEmpty(query)) {
             href += `?${qs.stringify(query)}`;
         }
 
@@ -189,12 +192,15 @@ export abstract class HateoasModel<T extends HateoasModel = any> {
         }
 
         // Get the HTTP for the method with NestJS metadata.
-        const httpMethod = Reflect.getMetadata(METHOD_METADATA, method)?.toUpperCase();
+        const requestMethod = Reflect.getMetadata(METHOD_METADATA, method);
+        // Map the enum value to the string.
+        const requestMethodName = RequestMethod[requestMethod];
 
-        return Object.assign(attributes, {
-            method: httpMethod !== "GET" ? httpMethod : undefined,
+        return {
+            ...(attributes ?? {}),
+            method: requestMethod !== RequestMethod.GET ? requestMethodName : undefined,
             href,
             templated,
-        });
+        };
     }
 }
