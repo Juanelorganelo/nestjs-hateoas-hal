@@ -1,5 +1,10 @@
-# E-Learning API
-A RESTful API for a generic e-learning platform.
+# nestjs-hateoas-hal
+
+## What?
+This is a NestJS demo app for user authentication.
+The main part is that it has a [NestJS library](https://github.com/Juanelorganelo/nestjs-hateoas-hal/blob/master/src/core/hateoas/HateoasModule.ts) for using JSON HAL as the API's main content type with a declarative syntax.
+
+It consists of NestJS specific modules (interceptors and whatnot) as well as a platform-agnostic API for declaring linked data (so that it can be used with other hypermedia formats).
 
 ## Quick start
 Clone the repo.
